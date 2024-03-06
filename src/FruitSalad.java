@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Locale;
-
 public class FruitSalad {
 
     public static void main(String[] args) {
