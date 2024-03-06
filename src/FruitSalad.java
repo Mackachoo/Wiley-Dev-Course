@@ -23,9 +23,7 @@ public class FruitSalad {
 
         //Add the other fruits
         for (String fruit: fruits) {
-            if (fruitCount >= 12) {
-                break;
-            }
+            if (fruitCount >= 12) break;
             if ((!fruit.contains("Apple") || appleCount < 3) && (!fruit.contains("Orange") || orangeCount < 3) &&
                     !fruit.contains("Tomato") && !fruit.contains("berry")) {
                 fruitSalad[fruitCount++] = fruit;
