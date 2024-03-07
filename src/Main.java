@@ -9,10 +9,8 @@ public class Main {
         double initialInvestment = mcScan.nextDouble();
         System.out.print("How many years are investing? ");
         int yearsInvesting = mcScan.nextInt();
-        System.out.print("What is the annual interest rate % growth? ");
-        float interest = 1 + mcScan.nextFloat()/100f;
 
-        // Compound Period Input Retrieval
+        // Interest/Compound Input Retrieval
         System.out.println("What period does the interest compound?");
         System.out.println("a) Daily\t\t\tc) Quarterly\nb) Monthly\t\t\td) Yearly");
         String choice = mcScan.next();
@@ -28,12 +26,14 @@ public class Main {
                 compoundMultiplier = 1;
                 break;
         }
+        System.out.print("What is the annual interest rate % growth? ");
+        float interest = 1 + mcScan.nextFloat() / (100f * compoundMultiplier);
 
         // Calculation per Year
         System.out.println("\nCalculating...\n");
         for (int i = 1; i <= yearsInvesting; i++) {
-            double start = initialInvestment*Math.pow(interest / compoundMultiplier, (i-1) * compoundMultiplier);
-            double end = initialInvestment*Math.pow(interest / compoundMultiplier, i * compoundMultiplier);
+            double start = initialInvestment*Math.pow(interest, (i-1) * compoundMultiplier);
+            double end = initialInvestment*Math.pow(interest, i * compoundMultiplier);
 
             System.out.println("Year "+ i +":");
             System.out.format("Began with $%.2f", start);
