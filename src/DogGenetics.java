@@ -11,9 +11,9 @@ public class DogGenetics {
         System.out.println("What is your dog's name?");
         String dogName = mcScan.nextLine();
 
-        System.out.printf("Well then, I have this highly reliable report on %s's prestigious background right here.",
+        System.out.printf("\nWell then, I have this highly reliable report on %s's prestigious background right here.",
                 dogName);
-        System.out.printf("%s is:", dogName);
+        System.out.printf("\nMIra\n%s is:", dogName);
         
         double[] breeds = {rng.nextDouble(), rng.nextDouble(), rng.nextDouble(), rng.nextDouble(), rng.nextDouble(),};
         double sum = Arrays.stream(breeds).sum();
@@ -21,13 +21,13 @@ public class DogGenetics {
             breeds[i] = breeds[i] * 100 / sum;
         }
 
-        System.out.printf("\n%f$.2 St. Bernard", breeds[0]);
-        System.out.printf("\n%f$.2 Chihuahua", breeds[1]);
-        System.out.printf("\n%f$.2 Dramatic RedNosed Asian Pug", breeds[2]);
-        System.out.printf("\n%f$.2 Common Cur", breeds[3]);
-        System.out.printf("\n%f$.2 King Doberman", breeds[4]);
+        System.out.printf("\n%.1f St. Bernard", breeds[0]);
+        System.out.printf("\n%.1f Chihuahua", breeds[1]);
+        System.out.printf("\n%.1f Dramatic RedNosed Asian Pug", breeds[2]);
+        System.out.printf("\n%.1f Common Cur", breeds[3]);
+        System.out.printf("\n%.1f King Doberman", breeds[4]);
 
-        System.out.printf("\nWow, that's %f% a dog!", Arrays.stream(breeds).sum());
+        System.out.printf("\n\nWow, that's %.0f%% a dog!", Arrays.stream(breeds).sum());
 
 
     }
