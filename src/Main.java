@@ -32,8 +32,8 @@ public class Main {
         // Calculation per Year
         System.out.println("\nCalculating...\n");
         for (int i = 1; i <= yearsInvesting; i++) {
-            double start = initialInvestment*Math.pow(interest, (i-1) * compoundMultiplier);
-            double end = initialInvestment*Math.pow(interest, i * compoundMultiplier);
+            double start = initialInvestment*Math.pow(interest / compoundMultiplier, (i-1) * compoundMultiplier);
+            double end = initialInvestment*Math.pow(interest / compoundMultiplier, i * compoundMultiplier);
 
             System.out.println("Year "+ i +":");
             System.out.format("Began with $%.2f", start);
