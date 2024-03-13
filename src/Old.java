@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Old {
 
     public static void main(String[] args) throws FileNotFoundException {
         Map<String, String> statecapitals = readMap("src/StateCapitals.txt");
