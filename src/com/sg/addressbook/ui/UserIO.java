@@ -1,4 +1,4 @@
-package com.sg.classroster.ui;
+package com.sg.addressbook.ui;
 
 public interface UserIO {
     void print(String msg);
@@ -20,4 +20,5 @@ public interface UserIO {
     long readLong(String prompt, long min, long max);
 
     String readString(String prompt);
+    String readString(String prompt, boolean allowEmpty);
 }

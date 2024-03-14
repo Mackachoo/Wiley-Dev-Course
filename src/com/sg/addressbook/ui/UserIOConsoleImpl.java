@@ -1,4 +1,4 @@
-package com.sg.classroster.ui;
+package com.sg.addressbook.ui;
 
 import java.util.Scanner;
 
@@ -13,8 +13,22 @@ public class UserIOConsoleImpl implements UserIO{
 
     @Override
     public String readString(String prompt) {
-        print(prompt);
-        return mcScan.nextLine();
+        String line;
+        do {
+            print(prompt);
+            line = mcScan.nextLine();
+        } while(line.isEmpty());
+        return line;
+    }
+
+    @Override
+    public String readString(String prompt, boolean allowEmpty) {
+        String line;
+        do {
+            print(prompt);
+            line = mcScan.nextLine();
+        } while(line.isEmpty() && !allowEmpty);
+        return line;
     }
 
     @Override
