@@ -90,4 +90,13 @@ public class ClassRosterView {
         io.readString("Please hit enter to continue.");
     }
 
+    // Exiting
+    public void displayExitBanner() {
+        io.print("Good Bye!!!");
+    }
+
+    public void displayUnknownCommandBanner() {
+        io.print("Unknown Command!!!");
+    }
+
 }

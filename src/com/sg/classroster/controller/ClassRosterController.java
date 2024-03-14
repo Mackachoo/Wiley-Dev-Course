@@ -41,11 +41,10 @@ public class ClassRosterController {
                     keepGoing = false;
                     break;
                 default:
-                    io.print("UNKNOWN COMMAND");
+                    view.displayUnknownCommandBanner();
             }
-
         }
-        io.print("GOOD BYE");
+        view.displayExitBanner();
     }
 
     private void createStudent() {
