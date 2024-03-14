@@ -1,3 +1,5 @@
+package com.db.quiz.io;
+
 public interface UserIO {
 
     void print(String message);
