@@ -22,6 +22,11 @@ public class ClassRosterView {
         return io.readInt("Please select from the above choices.", 1, 5);
     }
 
+    public void displayErrorMessage(String errorMsg) {
+        io.print("=== ERROR ===");
+        io.print(errorMsg);
+    }
+
     // Create Student
     public void displayCreateStudentBanner() {
         io.print("=== Create Student ===");
