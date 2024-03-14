@@ -7,6 +7,8 @@ import com.sg.classroster.ui.ClassRosterView;
 import com.sg.classroster.ui.UserIO;
 import com.sg.classroster.ui.UserIOConsoleImpl;
 
+import java.util.List;
+
 public class ClassRosterController {
 
     private final UserIO io = new UserIOConsoleImpl();
@@ -24,10 +26,11 @@ public class ClassRosterController {
 
             switch (menuSelection) {
                 case 1:
-                    io.print("LIST STUDENTS");
+                    listStudents();
                     break;
                 case 2:
                     createStudent();
+                    break;
                 case 3:
                     io.print("VIEW STUDENT");
                     break;
@@ -51,5 +54,12 @@ public class ClassRosterController {
         dao.addStudent(newStudent.getStudentId(), newStudent);
         view.displayCreateSuccessBanner();
     }
+
+    private void listStudents() {
+        view.displayDisplayAllBanner();
+        List<Student> studentList = dao.getAllStudents();
+        view.displayStudentList(studentList);
+    }
+
 
 }
