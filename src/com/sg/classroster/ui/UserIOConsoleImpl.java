@@ -14,7 +14,7 @@ public class UserIOConsoleImpl implements UserIO{
     @Override
     public String readString(String prompt) {
         print(prompt);
-        return mcScan.next();
+        return mcScan.nextLine();
     }
 
     @Override
