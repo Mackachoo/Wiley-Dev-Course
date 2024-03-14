@@ -38,4 +38,31 @@ public class Student {
     public void setCohort(String cohort) {
         this.cohort = cohort;
     }
+
+    @Override
+    public String toString() {
+        String studentAsText = getStudentId() + "::";
+
+        studentAsText += getFirstName() + "::";
+        studentAsText += getLastName() + "::";
+        studentAsText += getCohort();
+
+        return studentAsText;
+
+    }
+
+    public static Student parseStudent(String s) {
+        String[] studentTokens = s.split("::");
+
+        String studentId = studentTokens[0];
+        Student studentFromFile = new Student(studentId);
+
+        studentFromFile.setFirstName(studentTokens[1]);
+        studentFromFile.setLastName(studentTokens[2]);
+        studentFromFile.setCohort(studentTokens[3]);
+
+        return studentFromFile;
+
+    }
+
 }

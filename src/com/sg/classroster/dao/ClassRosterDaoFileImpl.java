@@ -44,19 +44,6 @@ public class ClassRosterDaoFileImpl implements ClassRosterDao {
         return removedStudent;
     }
 
-    private Student unmarshallStudent(String studentAsText){
-        String[] studentTokens = studentAsText.split(DELIMITER);
-
-        String studentId = studentTokens[0];
-        Student studentFromFile = new Student(studentId);
-
-        studentFromFile.setFirstName(studentTokens[1]);
-        studentFromFile.setLastName(studentTokens[2]);
-        studentFromFile.setCohort(studentTokens[3]);
-
-        return studentFromFile;
-    }
-
     private void loadRoster() throws ClassRosterDaoException {
         Scanner scanner;
 
@@ -75,21 +62,11 @@ public class ClassRosterDaoFileImpl implements ClassRosterDao {
 
         while (scanner.hasNextLine()) {
             currentLine = scanner.nextLine();
-            currentStudent = unmarshallStudent(currentLine);
+            currentStudent = Student.parseStudent(currentLine);
 
             students.put(currentStudent.getStudentId(), currentStudent);
         }
         scanner.close();
-    }
-
-    private String marshallStudent(Student aStudent){
-        String studentAsText = aStudent.getStudentId() + DELIMITER;
-
-        studentAsText += aStudent.getFirstName() + DELIMITER;
-        studentAsText += aStudent.getLastName() + DELIMITER;
-        studentAsText += aStudent.getCohort();
-
-        return studentAsText;
     }
 
     private void writeRoster() throws ClassRosterDaoException {
@@ -105,7 +82,7 @@ public class ClassRosterDaoFileImpl implements ClassRosterDao {
         String studentAsText;
         List<Student> studentList = this.getAllStudents();
         for (Student currentStudent : studentList) {
-            studentAsText = marshallStudent(currentStudent);
+            studentAsText = currentStudent.toString();
             out.println(studentAsText);
             out.flush();
         }
