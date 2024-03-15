@@ -1,4 +1,4 @@
-package com.sg.classroster.ui;
+package com.sg.dvdlibrary.ui;
 
 public interface UserIO {
     void print(String msg);
