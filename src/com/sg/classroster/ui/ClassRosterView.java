@@ -99,6 +99,11 @@ public class ClassRosterView {
         io.readString("Please hit enter to continue.");
     }
 
+    public void displayRemoveSuccessBanner() {
+        io.print("Student successfully removed.");
+        io.readString("Please hit enter to continue.");
+    }
+
     // Exiting
     public void displayExitBanner() {
         io.print("Good Bye!!!");
