@@ -15,8 +15,7 @@ public class App {
         UserIO myIo = new UserIOConsoleImpl();
         View myView = new View(myIo);
         Dao myDao = new DaoFileImpl();
-        AuditDao myAuditDao = new AuditDaoFileImpl();
-        ServiceLayer myService = new ServiceLayerImpl(myDao, myAuditDao);
+        ServiceLayer myService = new ServiceLayerImpl(myDao);
 
         Controller controller =
                 new Controller(myService, myView);

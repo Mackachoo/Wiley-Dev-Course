@@ -13,9 +13,8 @@ public class ServiceLayerImpl implements
     private Dao dao;
 
 
-    public ServiceLayerImpl(Dao dao, AuditDao auditDao) {
+    public ServiceLayerImpl(Dao dao) {
         this.dao = dao;
-        this.auditDao = auditDao;
     }
 
     @Override
