@@ -1,5 +1,8 @@
 package com.sg.dvdlibrary.dto;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -8,7 +11,7 @@ import java.util.stream.Stream;
 public class DVD {
 
     String title;
-    String release;
+    LocalDate release;
     String rating;
     String director;
     String studio;
@@ -39,8 +42,8 @@ public class DVD {
 
     @Override
     public String toString() {
-        List<String> strings = Arrays.asList(title, release, rating, director, studio, review);
-        Stream<String> stream = strings.stream().map(s -> s == null ? "NaN" : s);
+        List<? extends Serializable> strings = Arrays.asList(title, release, rating, director, studio, review);
+        Stream<String> stream = strings.stream().map(s -> s == null ? "NaN" : s.toString());
         return String.join("::", stream.toArray(String[]::new));
     }
 
@@ -58,7 +61,8 @@ public class DVD {
     }
 
     public void setRelease(String release) {
-        this.release = release.replace("::", "").strip();
+        release = release.replace("::", "").strip();
+        this.release = LocalDate.parse(release, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     public void setRating(String rating) {
@@ -82,7 +86,7 @@ public class DVD {
     }
 
     public String getRelease() {
-        return release;
+        return release.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     public String getRating() {

@@ -31,7 +31,7 @@ public class View {
 
     public String[] ask4Meta () {
         String[] metas = new String[5];
-        metas[0] = io.readString("Please enter DVD's Release Date:");
+        metas[0] = io.readString("Please enter DVD's Release Date (dd-mm-yyyy):");
         metas[1] = io.readString("Please enter DVD's MPAA Rating:");
         metas[2] = io.readString("Please enter DVD's Director:");
         metas[3] = io.readString("Please enter DVD's Studio:");
