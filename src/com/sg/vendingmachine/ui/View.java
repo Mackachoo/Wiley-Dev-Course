@@ -13,7 +13,6 @@ public class View {
         this.io = io;
     }
 
-
     public void displayErrorMessage(String errorMsg) {
         io.print("=== ERROR ===");
         io.print(errorMsg);
