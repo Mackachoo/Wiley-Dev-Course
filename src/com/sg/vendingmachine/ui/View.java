@@ -19,7 +19,7 @@ public class View {
     }
 
     public void displayVendingMachineBanner() {
-        io.readString("=== Vending Machine ===\n");
+        io.print("\n=== Vending Machine ===\n");
     }
 
     // Display All Items
@@ -34,7 +34,12 @@ public class View {
                     quantity);
             io.print(itemInfo);
         }
-        selectItem();
+        io.print("---------------------");
+    }
+
+    // Prompt for money
+    public BigDecimal enterMoney() {
+        return new BigDecimal(io.readString("Add money: "));
     }
 
     // Prompt an item
@@ -44,7 +49,7 @@ public class View {
 
     // Confirm the transaction is a success
     public void confirmTransaction(Item item) {
-        io.print("You got "+ item +" for £"+ item.getCost()+ "." );
+        io.print("You got "+ item.getName() +" for £"+ item.getCost() + "." );
     }
 
     // Display change
@@ -54,7 +59,12 @@ public class View {
 
     // Invalid selection
     public void invalidSelection(Item item){
-        io.print("No "+ item.getName() + " in the vending machine, try again...");
+        io.print("Item not in the vending machine, try again...");
+    }
+
+
+    public void runoutSelection(Item item){
+        io.print("Vending machine has run out of " + item.getName());
     }
 
     // Lack of funds message

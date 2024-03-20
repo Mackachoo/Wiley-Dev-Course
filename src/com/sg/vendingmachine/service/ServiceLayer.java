@@ -10,10 +10,13 @@ import java.util.Map;
 public interface ServiceLayer {
 
     // This returns a list of all items in file.
+    // Access Item
+    public Item accessItem(Item item);
     public Map<Item, Integer> getAll();
 
     // Removes an item if present and returns VendResult.
     public VendResult vendItem(Item item, BigDecimal money);
+
 
     //Calculates change
     public BigDecimal calculateChange(Item item, BigDecimal money);

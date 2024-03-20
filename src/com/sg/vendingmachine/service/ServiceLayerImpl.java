@@ -10,8 +10,7 @@ import java.util.Map;
 
 import static com.sg.vendingmachine.service.VendResult.*;
 
-public class ServiceLayerImpl implements
-        ServiceLayer {
+public class ServiceLayerImpl implements ServiceLayer {
 
     private Dao dao;
 
@@ -27,15 +26,20 @@ public class ServiceLayerImpl implements
 
     @Override
     public VendResult vendItem(Item item, BigDecimal money) {
-        if(dao.itemAccess(item) == null){
+        if(item == null){
             return INVALIDITEM;
         }
         else if(dao.getCount(item) == 0){
             return NOMOREITEMS;
-        }else if(money.compareTo(dao.getPrice(item)) > 0){
+        }else if(money.compareTo(dao.getPrice(item)) < 0){
             return INVALIDFUNDS;
         }
         return BOUGHT;
+    }
+
+    @Override
+    public Item accessItem(Item item) {
+        return dao.itemAccess(item);
     }
 
     @Override
