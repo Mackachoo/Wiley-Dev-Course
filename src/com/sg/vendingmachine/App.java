@@ -1,8 +1,6 @@
 package com.sg.vendingmachine;
 
 import com.sg.vendingmachine.controller.Controller;
-import com.sg.vendingmachine.dao.AuditDao;
-import com.sg.vendingmachine.dao.AuditDaoFileImpl;
 import com.sg.vendingmachine.dao.Dao;
 import com.sg.vendingmachine.dao.DaoFileImpl;
 import com.sg.vendingmachine.service.ServiceLayer;

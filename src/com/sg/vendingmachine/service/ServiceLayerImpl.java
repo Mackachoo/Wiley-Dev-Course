@@ -1,17 +1,16 @@
 package com.sg.vendingmachine.service;
 
-import com.sg.vendingmachine.dao.AuditDao;
 import com.sg.vendingmachine.dao.Dao;
 import com.sg.vendingmachine.dao.PersistenceException;
 import com.sg.vendingmachine.dto.Item;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ServiceLayerImpl implements
         ServiceLayer {
 
-    Dao dao;
-    private AuditDao auditDao;
+    private Dao dao;
 
 
     public ServiceLayerImpl(Dao dao, AuditDao auditDao) {

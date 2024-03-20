@@ -1,48 +1,22 @@
 package com.sg.vendingmachine.dao;
 
 import com.sg.vendingmachine.dto.Item;
+import com.sg.vendingmachine.dto.VendingMachine;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface Dao {
 
-    /**
-     * Adds the given Student to the roster and associates it with the given
-     * student id. If there is already a student associated with the given
-     * student id it will return that student object, otherwise it will
-     * return null.
-     *
-     * @param studentId id with which student is to be associated
-     * @param item student to be added to the roster
-     * @return the Student object previously associated with the given
-     * student id if it exists, null otherwise
-     */
-    Item addStudent(String studentId, Item item) throws PersistenceException;
+    // Returns all items
+    public List<Item> getAll();
 
-    /**
-     * Returns a List of all students in the roster.
-     *
-     * @return List containing all students in the roster.
-     */
-    List<Item> getAllStudents() throws PersistenceException;
+    // Gets price of item
+    public BigDecimal getPrice(Item item);
 
-    /**
-     * Returns the student object associated with the given student id.
-     * Returns null if no such student exists
-     *
-     * @param studentId ID of the student to retrieve
-     * @return the Student object associated with the given student id,
-     * null if no such student exists
-     */
-    Item getStudent(String studentId) throws PersistenceException;
+    // Checks if item is present and returns it, null if no item
+    public Item itemAccess(Item item);
 
-    /**
-     * Removes from the roster the student associated with the given id.
-     * Returns the student object that is being removed or null if
-     * there is no student associated with the given id
-     *
-     * @param studentId id of student to be removed
-     * @return Student object that was removed or null if no student
-     * was associated with the given student id
-     */
-    Item removeStudent(String studentId) throws PersistenceException;
+    // Remove item
+    public void removeItem(Item item);
 }
