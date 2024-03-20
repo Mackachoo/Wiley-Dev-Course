@@ -72,6 +72,11 @@ public class DaoFileImpl implements Dao {
     }
 
     @Override
+    public int getCount(Item item) {
+        return items.get(item);
+    }
+
+    @Override
     public void removeItem(Item item) {
         readFile();
         items.replace(item, items.get(item) - 1);

@@ -16,6 +16,9 @@ public interface Dao {
     // Gets price of item
     public BigDecimal getPrice(Item item);
 
+    // Gets count of item
+    public int getCount(Item item);
+
     // Remove item
     public void removeItem(Item item);
 }
