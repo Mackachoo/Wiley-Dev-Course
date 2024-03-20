@@ -73,6 +73,7 @@ public class DaoFileImpl implements Dao {
 
     @Override
     public int getCount(Item item) {
+        readFile();
         return items.get(item);
     }
 
