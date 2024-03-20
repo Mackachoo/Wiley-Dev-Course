@@ -1,36 +1,36 @@
 package com.sg.vendingmachine.service;
 
-import com.sg.vendingmachine.dao.ClassRosterAuditDao;
-import com.sg.vendingmachine.dao.ClassRosterDao;
-import com.sg.vendingmachine.dao.ClassRosterPersistenceException;
+import com.sg.vendingmachine.dao.AuditDao;
+import com.sg.vendingmachine.dao.Dao;
+import com.sg.vendingmachine.dao.PersistenceException;
 import com.sg.vendingmachine.dto.Student;
 
 import java.util.List;
 
-public class ClassRosterServiceLayerImpl implements
-        ClassRosterServiceLayer {
+public class ServiceLayerImpl implements
+        ServiceLayer {
 
-    ClassRosterDao dao;
-    private ClassRosterAuditDao auditDao;
+    Dao dao;
+    private AuditDao auditDao;
 
 
-    public ClassRosterServiceLayerImpl(ClassRosterDao dao, ClassRosterAuditDao auditDao) {
+    public ServiceLayerImpl(Dao dao, AuditDao auditDao) {
         this.dao = dao;
         this.auditDao = auditDao;
     }
 
     @Override
     public void createStudent(Student student) throws
-            ClassRosterDuplicateIdException,
-            ClassRosterDataValidationException,
-            ClassRosterPersistenceException {
+            DuplicateIdException,
+            DataValidationException,
+            PersistenceException {
 
         // First check to see if there is already a student
         // associated with the given student's id
         // If so, we're all done here -
         // throw a ClassRosterDuplicateIdException
         if (dao.getStudent(student.getStudentId()) != null) {
-            throw new ClassRosterDuplicateIdException(
+            throw new DuplicateIdException(
                     "ERROR: Could not create student.  Student Id "
                             + student.getStudentId()
                             + " already exists");
@@ -53,18 +53,18 @@ public class ClassRosterServiceLayerImpl implements
 
     @Override
     public List<Student> getAllStudents() throws
-            ClassRosterPersistenceException {
+            PersistenceException {
         return dao.getAllStudents();
     }
 
     @Override
     public Student getStudent(String studentId) throws
-            ClassRosterPersistenceException {
+            PersistenceException {
         return dao.getStudent(studentId);
     }
 
     @Override
-    public Student removeStudent(String studentId) throws ClassRosterPersistenceException {
+    public Student removeStudent(String studentId) throws PersistenceException {
         Student removedStudent = dao.removeStudent(studentId);
         // Write to audit log
         auditDao.writeAuditEntry("Student " + studentId + " REMOVED.");
@@ -72,7 +72,7 @@ public class ClassRosterServiceLayerImpl implements
     }
 
     private void validateStudentData(Student student) throws
-            ClassRosterDataValidationException {
+            DataValidationException {
 
         if (student.getFirstName() == null
                 || student.getFirstName().trim().isEmpty()
@@ -81,7 +81,7 @@ public class ClassRosterServiceLayerImpl implements
                 || student.getCohort() == null
                 || student.getCohort().trim().isEmpty()) {
 
-            throw new ClassRosterDataValidationException(
+            throw new DataValidationException(
                     "ERROR: All fields [First Name, Last Name, Cohort] are required.");
         }
     }

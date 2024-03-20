@@ -1,20 +1,20 @@
 package com.sg.vendingmachine.controller;
 
-import com.sg.vendingmachine.dao.ClassRosterPersistenceException;
+import com.sg.vendingmachine.dao.PersistenceException;
 import com.sg.vendingmachine.dto.Student;
-import com.sg.vendingmachine.service.ClassRosterDataValidationException;
-import com.sg.vendingmachine.service.ClassRosterDuplicateIdException;
-import com.sg.vendingmachine.service.ClassRosterServiceLayer;
-import com.sg.vendingmachine.ui.ClassRosterView;
+import com.sg.vendingmachine.service.DataValidationException;
+import com.sg.vendingmachine.service.DuplicateIdException;
+import com.sg.vendingmachine.service.ServiceLayer;
+import com.sg.vendingmachine.ui.View;
 
 import java.util.List;
 
-public class ClassRosterController {
+public class Controller {
 
-    private final ClassRosterView view;
-    private ClassRosterServiceLayer service;
+    private final View view;
+    private ServiceLayer service;
 
-    public ClassRosterController(ClassRosterServiceLayer service, ClassRosterView view) {
+    public Controller(ServiceLayer service, View view) {
         this.service = service;
         this.view = view;
     }
@@ -49,12 +49,12 @@ public class ClassRosterController {
                 }
             }
             view.displayExitBanner();
-        } catch (ClassRosterPersistenceException e) {
+        } catch (PersistenceException e) {
             view.displayErrorMessage(e.getMessage());
         }
     }
 
-    private void createStudent() throws ClassRosterPersistenceException {
+    private void createStudent() throws PersistenceException {
         view.displayCreateStudentBanner();
         boolean hasErrors = false;
         do {
@@ -63,25 +63,25 @@ public class ClassRosterController {
                 service.createStudent(currentStudent);
                 view.displayCreateSuccessBanner();
                 hasErrors = false;
-            } catch (ClassRosterDuplicateIdException | ClassRosterDataValidationException e) {
+            } catch (DuplicateIdException | DataValidationException e) {
                 hasErrors = true;
                 view.displayErrorMessage(e.getMessage());
             }
         } while (hasErrors);
     }
 
-    private void listStudents() throws ClassRosterPersistenceException {
+    private void listStudents() throws PersistenceException {
         List<Student> studentList = service.getAllStudents();
         view.displayStudentList(studentList);
     }
 
-    private void viewStudent() throws ClassRosterPersistenceException {
+    private void viewStudent() throws PersistenceException {
         String studentId = view.getStudentIdChoice();
         Student student = service.getStudent(studentId) ;
         view.displayStudent(student);
     }
 
-    private void removeStudent() throws ClassRosterPersistenceException {
+    private void removeStudent() throws PersistenceException {
         view.displayRemoveStudentBanner();
         String studentId = view.getStudentIdChoice();
         service.removeStudent(studentId);

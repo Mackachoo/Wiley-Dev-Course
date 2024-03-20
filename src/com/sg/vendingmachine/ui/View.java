@@ -4,10 +4,10 @@ import com.sg.vendingmachine.dto.Student;
 
 import java.util.List;
 
-public class ClassRosterView {
+public class View {
     private UserIO io;
 
-    public ClassRosterView(UserIO io) {
+    public View(UserIO io) {
         this.io = io;
     }
 
