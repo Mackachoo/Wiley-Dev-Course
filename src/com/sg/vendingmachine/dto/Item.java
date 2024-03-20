@@ -29,7 +29,7 @@ public class Item {
 
         Item item = (Item) o;
 
-        return Objects.equals(name, item.name);
+        return Objects.equals(name.toLowerCase(), item.name.toLowerCase());
     }
 
     @Override

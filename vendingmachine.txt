@@ -1,2 +1,12 @@
 Coke::1.2::10
 Haribo::1::11
+Salted Crisps::1.2::8
+Grenola Bar::0.7::12
+Cream Egg::2.5::2
+Highlands Water::0.5::24
+Mini Cooper::3500::1
+Really Big Apple::9.99::1
+Spring Onions::0.99::6
+Bad Coffee::3.4::999
+Redwood Tree::320::2
+Shark::1::1
