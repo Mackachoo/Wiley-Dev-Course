@@ -1,4 +1,4 @@
-package com.sg.classroster.dto;
+package com.sg.vendingmachine.dto;
 
 public class Student {
     private String firstName;

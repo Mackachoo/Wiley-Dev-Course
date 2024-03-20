@@ -1,7 +1,7 @@
-package com.sg.classroster.service;
+package com.sg.vendingmachine.service;
 
-import com.sg.classroster.dao.ClassRosterPersistenceException;
-import com.sg.classroster.dto.Student;
+import com.sg.vendingmachine.dao.ClassRosterPersistenceException;
+import com.sg.vendingmachine.dto.Student;
 
 import java.util.List;
 

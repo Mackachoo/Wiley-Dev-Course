@@ -1,6 +1,6 @@
-package com.sg.classroster.ui;
+package com.sg.vendingmachine.ui;
 
-import com.sg.classroster.dto.Student;
+import com.sg.vendingmachine.dto.Student;
 
 import java.util.List;
 

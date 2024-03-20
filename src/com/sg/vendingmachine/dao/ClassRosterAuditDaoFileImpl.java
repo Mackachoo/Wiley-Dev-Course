@@ -1,4 +1,4 @@
-package com.sg.classroster.dao;
+package com.sg.vendingmachine.dao;
 
 import java.io.FileWriter;
 import java.io.IOException;

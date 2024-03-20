@@ -1,4 +1,4 @@
-package com.sg.classroster.service;
+package com.sg.vendingmachine.service;
 
 public class ClassRosterDuplicateIdException extends Exception {
 

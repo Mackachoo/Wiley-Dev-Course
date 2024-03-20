@@ -1,6 +1,6 @@
-package com.sg.classroster.dao;
+package com.sg.vendingmachine.dao;
 
-import com.sg.classroster.dto.Student;
+import com.sg.vendingmachine.dto.Student;
 
 import java.io.*;
 import java.util.*;

@@ -1,11 +1,11 @@
-package com.sg.classroster.controller;
+package com.sg.vendingmachine.controller;
 
-import com.sg.classroster.dao.ClassRosterPersistenceException;
-import com.sg.classroster.dto.Student;
-import com.sg.classroster.service.ClassRosterDataValidationException;
-import com.sg.classroster.service.ClassRosterDuplicateIdException;
-import com.sg.classroster.service.ClassRosterServiceLayer;
-import com.sg.classroster.ui.ClassRosterView;
+import com.sg.vendingmachine.dao.ClassRosterPersistenceException;
+import com.sg.vendingmachine.dto.Student;
+import com.sg.vendingmachine.service.ClassRosterDataValidationException;
+import com.sg.vendingmachine.service.ClassRosterDuplicateIdException;
+import com.sg.vendingmachine.service.ClassRosterServiceLayer;
+import com.sg.vendingmachine.ui.ClassRosterView;
 
 import java.util.List;
 
