@@ -6,6 +6,9 @@ import com.sg.vendingmachine.dto.Item;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
+
+import static com.sg.vendingmachine.service.VendResult.*;
 
 public class ServiceLayerImpl implements
         ServiceLayer {
@@ -48,41 +51,32 @@ public class ServiceLayerImpl implements
                 "Student " + item.getStudentId() + " CREATED.");
 
     }
+    public ServiceLayerImpl(Dao dao) {
+    }
+
 
     @Override
-    public List<Item> getAllStudents() throws
-            PersistenceException {
-        return dao.getAllStudents();
+    public Map<Item, Integer> getAll() {
+        return dao.getAll();
     }
 
     @Override
-    public Item getStudent(String studentId) throws
-            PersistenceException {
-        return dao.getStudent(studentId);
-    }
-
-    @Override
-    public Item removeStudent(String studentId) throws PersistenceException {
-        Item removedItem = dao.removeStudent(studentId);
-        // Write to audit log
-        auditDao.writeAuditEntry("Student " + studentId + " REMOVED.");
-        return removedItem;
-    }
-
-    private void validateStudentData(Item item) throws
-            DataValidationException {
-
-        if (item.getFirstName() == null
-                || item.getFirstName().trim().isEmpty()
-                || item.getLastName() == null
-                || item.getLastName().trim().isEmpty()
-                || item.getCohort() == null
-                || item.getCohort().trim().isEmpty()) {
-
-            throw new DataValidationException(
-                    "ERROR: All fields [First Name, Last Name, Cohort] are required.");
+    public VendResult vendItem(Item item, BigDecimal money) {
+        if(dao.itemAccess(item) == null){
+            return INVALIDITEM;
         }
+        else if(dao.getCount(item) == 0){
+            return NOMOREITEMS;
+        }else if(money.compareTo(dao.getPrice(item)) > 0){
+            return INVALIDFUNDS;
+        }
+        return BOUGHT;
     }
 
+    @Override
+    public BigDecimal calculateChange(Item item, BigDecimal money) {
+        money = money.subtract(dao.getPrice(item));
+        return money;
+    }
 }
 
