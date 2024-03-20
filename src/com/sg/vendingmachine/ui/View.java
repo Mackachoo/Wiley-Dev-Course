@@ -1,8 +1,11 @@
 package com.sg.vendingmachine.ui;
 
 import com.sg.vendingmachine.dto.Item;
+import com.sg.vendingmachine.service.Coins;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 
@@ -53,8 +56,10 @@ public class View {
     }
 
     // Display change
-    public void giveChange(BigDecimal change){
-        io.print("Your change is £" + change);
+    public void giveChange(Map<Coins, Integer> change){
+        io.print("Your change is:");
+        change.keySet().stream().filter(key -> change.get(key) != 0).forEach(key -> {io.print(change.get(key).toString() +
+                " x " + key);});
     }
 
     // Invalid selection

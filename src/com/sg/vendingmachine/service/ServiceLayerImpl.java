@@ -5,6 +5,7 @@ import com.sg.vendingmachine.dao.PersistenceException;
 import com.sg.vendingmachine.dto.Item;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,6 +35,7 @@ public class ServiceLayerImpl implements ServiceLayer {
         }else if(money.compareTo(dao.getPrice(item)) < 0){
             return INVALIDFUNDS;
         }
+        dao.removeItem(item);
         return BOUGHT;
     }
 
@@ -43,9 +45,44 @@ public class ServiceLayerImpl implements ServiceLayer {
     }
 
     @Override
-    public BigDecimal calculateChange(Item item, BigDecimal money) {
+    public Map<Coins, Integer> calculateChange(Item item, BigDecimal money) {
+        Map<Coins, Integer> coins = new HashMap<>(Map.of(Coins.POUND, money.intValue(), Coins.FIFTY, 0, Coins.TWENTY, 0,
+                Coins.TEN, 0, Coins.FIVE, 0, Coins.TWO, 0, Coins.ONE, 0));
         money = money.subtract(dao.getPrice(item));
-        return money;
+        BigDecimal rem = money.remainder(BigDecimal.valueOf(1));
+
+        while (rem.compareTo(BigDecimal.valueOf(0)) > 0) {
+            if (rem.compareTo(BigDecimal.valueOf(0.5)) >= 0) {
+                coins.replace(Coins.FIFTY, coins.get(Coins.FIFTY) + 1);
+                rem = rem.subtract(BigDecimal.valueOf(0.5));
+                continue;
+            }
+            if (rem.compareTo(BigDecimal.valueOf(0.2)) >= 0) {
+                coins.replace(Coins.TWENTY, coins.get(Coins.TWENTY) + 1);
+                rem = rem.subtract(BigDecimal.valueOf(0.2));
+                continue;
+            }
+            if (rem.compareTo(BigDecimal.valueOf(0.1)) >= 0) {
+                coins.replace(Coins.TEN, coins.get(Coins.TEN) + 1);
+                rem = rem.subtract(BigDecimal.valueOf(0.1));
+                continue;
+            }
+            if (rem.compareTo(BigDecimal.valueOf(0.05)) >= 0) {
+                coins.replace(Coins.FIVE, coins.get(Coins.FIVE) + 1);
+                rem = rem.subtract(BigDecimal.valueOf(0.05));
+                continue;
+            }
+            if (rem.compareTo(BigDecimal.valueOf(0.02)) >= 0) {
+                coins.replace(Coins.TWO, coins.get(Coins.TWO) + 1);
+                rem = rem.subtract(BigDecimal.valueOf(0.02));
+                continue;
+            }
+            if (rem.compareTo(BigDecimal.valueOf(0.01)) >= 0) {
+                coins.replace(Coins.ONE, coins.get(Coins.ONE) + 1);
+                rem = rem.subtract(BigDecimal.valueOf(0.01));
+            }
+        }
+        return coins;
     }
 }
 

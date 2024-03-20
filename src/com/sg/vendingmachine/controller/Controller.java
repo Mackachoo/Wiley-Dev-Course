@@ -23,7 +23,6 @@ public class Controller {
     public void run() {
         boolean keepRunning = true;
         while (keepRunning) {
-            view.displayVendingMachineBanner();
             view.displayItemsList(service.getAll());
             BigDecimal money = view.enterMoney();
             Item item = service.accessItem(new Item(view.selectItem()));

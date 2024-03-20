@@ -19,5 +19,5 @@ public interface ServiceLayer {
 
 
     //Calculates change
-    public BigDecimal calculateChange(Item item, BigDecimal money);
+    public Map<Coins, Integer> calculateChange(Item item, BigDecimal money);
 }
