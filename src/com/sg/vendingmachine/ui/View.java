@@ -2,7 +2,9 @@ package com.sg.vendingmachine.ui;
 
 import com.sg.vendingmachine.dto.Item;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 public class View {
     private UserIO io;
@@ -27,50 +29,35 @@ public class View {
         io.print(errorMsg);
     }
 
-    // Create Student
-    public void displayCreateStudentBanner() {
-        io.print("=== Create Student ===");
+
+    public void displayVendingMachineBanner() {
+        io.readString("=== Vending Machine ===\n");
     }
 
-    public Item getNewStudentInfo() {
-        String studentId = io.readString("Please enter Student ID");
-        String firstName = io.readString("Please enter First Name");
-        String lastName = io.readString("Please enter Last Name");
-        String cohort = io.readString("Please enter Cohort");
-        Item currentItem = new Item(studentId);
-        currentItem.setFirstName(firstName);
-        currentItem.setLastName(lastName);
-        currentItem.setCohort(cohort);
-        return currentItem;
-    }
-
-    public void displayCreateSuccessBanner() {
-        io.readString("Student successfully created.  Please hit enter to continue");
-    }
-
-    // Display All Students
-    public void displayDisplayAllBanner() {
-        io.print("=== Display All Students ===");
-    }
-
-    public void displayStudentList(List<Item> itemList) {
-        for (Item currentItem : itemList) {
-            String studentInfo = String.format("#%s : %s %s",
-                    currentItem.getStudentId(),
-                    currentItem.getFirstName(),
-                    currentItem.getLastName());
-            io.print(studentInfo);
+    // Display All Items
+    public void displayItemsList(Map<Item, Integer> itemList) {
+        displayVendingMachineBanner();
+        for (Map.Entry<Item, Integer> entry : itemList.entrySet()) {
+            Item currentItem = entry.getKey();
+            int quantity = entry.getValue();
+            String itemInfo = String.format("%s - £%s (Available x%s)",
+                    currentItem.getName(),
+                    currentItem.getCost(),
+                    quantity);
+            io.print(itemInfo);
         }
         io.readString("Please hit enter to continue.");
     }
 
-    // Display Single Student
-    public void displayDisplayStudentBanner () {
-        io.print("=== Display Student ===");
-    }
 
-    public String getStudentIdChoice() {
-        return io.readString("Please enter the Student ID.");
+    public String selectItem() {
+        return io.readString("Select item: ");
+    }
+    public void confirmTransaction(Item item) {
+        io.print("You got "+ item +" for £"+ item.getCost()+ "." );
+    }
+    public void giveChange(BigDecimal change){
+        io.print("Your change is £" + change);
     }
 
     public void displayStudent(Item item) {
