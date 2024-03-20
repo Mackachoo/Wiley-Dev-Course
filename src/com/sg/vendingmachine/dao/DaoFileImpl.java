@@ -1,6 +1,7 @@
 package com.sg.vendingmachine.dao;
 
 import com.sg.vendingmachine.dto.Item;
+import com.sg.vendingmachine.dto.VendingMachine;
 
 import javax.swing.*;
 import java.io.*;
@@ -9,10 +10,25 @@ import java.util.*;
 
 public class DaoFileImpl implements Dao {
 
-    static private Map<Item, Integer> vm = new HashMap<>();
+    VendingMachine vm = new VendingMachine();
 
-    public static void main(String[] args) {
-        vm.put(new Item("Coke", new BigDecimal("1.0")), 10);
-        vm.get(new Item("Coke"));
+    @Override
+    public Map<Item, Integer> getAll() {
+        return vm.getItems();
+    }
+
+    @Override
+    public BigDecimal getPrice(Item item) {
+        return null;
+    }
+
+    @Override
+    public Item itemAccess(Item item) {
+        return null;
+    }
+
+    @Override
+    public void removeItem(Item item) {
+
     }
 }
