@@ -24,6 +24,6 @@ public class StringsExerciseD {
      * @return String backwards
      */
     public static String simpleReverse(String phrase){
-        throw new UnsupportedOperationException("Code not yet written...!");
+        return new StringBuilder(phrase).reverse().toString();
     }
 }

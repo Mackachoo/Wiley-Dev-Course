@@ -5,9 +5,8 @@
 package com.tsg.unittesting;
 
 import static com.tsg.unittesting.HappyLlamas.areTheLlamasHappy;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.Test;
 
 /**
  *

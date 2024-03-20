@@ -37,7 +37,13 @@ public class LogicExerciseE {
      * @return String color
      */
     public static String whatColor(int waveLengthNM, int frequencyTHZ, double photonicEnergyEV) {
-        throw new UnsupportedOperationException("Code not yet written...!");
+        	if (waveLengthNM >= 380 && waveLengthNM < 450 && frequencyTHZ >= 668 && frequencyTHZ < 789 && photonicEnergyEV >= 2.75 && photonicEnergyEV < 3.26) return "Violet";
+        	if (waveLengthNM >= 450 && waveLengthNM < 495 && frequencyTHZ >= 606 && frequencyTHZ < 668 && photonicEnergyEV >= 2.50 && photonicEnergyEV < 2.75) return "Blue";
+        	if (waveLengthNM >= 495 && waveLengthNM < 570 && frequencyTHZ >= 526 && frequencyTHZ < 606 && photonicEnergyEV >= 2.17 && photonicEnergyEV < 2.50) return "Green";
+        	if (waveLengthNM >= 570 && waveLengthNM < 590 && frequencyTHZ >= 508 && frequencyTHZ < 526 && photonicEnergyEV >= 2.10 && photonicEnergyEV < 2.17) return "Yellow";
+        	if (waveLengthNM >= 590 && waveLengthNM < 620 && frequencyTHZ >= 484 && frequencyTHZ < 508 && photonicEnergyEV >= 2.00 && photonicEnergyEV < 2.10) return "Orange";
+        	if (waveLengthNM >= 620 && waveLengthNM < 750 && frequencyTHZ >= 400 && frequencyTHZ < 484 && photonicEnergyEV >= 1.65 && photonicEnergyEV < 2.00) return "Red";
+            return "Unknown";
     }
 
 }

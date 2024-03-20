@@ -4,6 +4,8 @@
 *********************************/
 package com.tsg.unittesting.arrays;
 
+import java.util.Arrays;
+
 /**
  *
  * @author ahill
@@ -22,7 +24,14 @@ public class ArrayExerciseD {
      * @return
      */
     public static int pointFree(double[] numbers){
-        throw new UnsupportedOperationException("Code not yet written...!");
+        Integer max = null;
+        for (double num : numbers) {
+            int converted = Integer.parseInt(Double.toString(num).replace(".", ""));
+            if (max == null || converted > max) {
+                max = converted;
+            }
+        }
+        return max;
     }
     
 }

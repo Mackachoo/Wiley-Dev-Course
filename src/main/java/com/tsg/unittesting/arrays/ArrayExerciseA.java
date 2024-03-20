@@ -4,6 +4,9 @@
 *********************************/
 package com.tsg.unittesting.arrays;
 
+import java.util.Arrays;
+import java.util.OptionalInt;
+
 /**
  *
  * @author ahill
@@ -22,7 +25,7 @@ public class ArrayExerciseA {
      * @return int max
      */
     public static int maxOfArray(int[] numbers){
-        throw new UnsupportedOperationException("Code not yet written...!");
+        return Arrays.stream(numbers).max().getAsInt();
     }
     
 }

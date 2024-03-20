@@ -25,7 +25,17 @@ public class LogicExerciseB {
      * @return String
      */
     public String placeOf(int place) {
-        throw new UnsupportedOperationException("Code not yet written...!");
+        String num = Integer.toString(place);
+        switch (place % 10) {
+            case 1:
+                return num + "st";
+            case 2:
+                return num + "nd";
+            case 3:
+                return num + "rd";
+            default:
+                return num + "th";
+        }
     }
 
 }

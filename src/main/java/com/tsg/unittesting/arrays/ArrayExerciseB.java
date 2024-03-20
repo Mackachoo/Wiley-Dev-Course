@@ -4,6 +4,8 @@
 *********************************/
 package com.tsg.unittesting.arrays;
 
+import java.util.Arrays;
+
 /**
  *
  * @author ahill
@@ -24,7 +26,7 @@ public class ArrayExerciseB {
      */
 
     public static int[] multiplyAll(int multiplier, int[] numbers){
-        throw new UnsupportedOperationException("Code not yet written...!");
+        return Arrays.stream(numbers).map(x -> x * multiplier).toArray();
     }
     
 }

@@ -25,7 +25,8 @@ public class LogicExerciseD {
      * @return boolean
      */
     public static boolean isFirstTheFirst(char letterOne, char letterTwo) {
-        throw new UnsupportedOperationException("Code not yet written...!");
+        String l1 = Character.toString(letterOne), l2 = Character.toString(letterTwo);
+        return l1.compareToIgnoreCase(l2) < 0;
     }
 
 }

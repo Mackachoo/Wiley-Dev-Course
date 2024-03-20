@@ -4,6 +4,9 @@
 *********************************/
 package com.tsg.unittesting.strings;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  *
  * @author ahill
@@ -26,6 +29,6 @@ public class StringsExerciseF {
      * @return String word
      */
     public static String longestWord(String aPhrase){
-        throw new UnsupportedOperationException("Code not yet written...!");
+        return Arrays.stream(aPhrase.split(" +")).max(Comparator.comparingInt(String::length)).get();
     }
 }

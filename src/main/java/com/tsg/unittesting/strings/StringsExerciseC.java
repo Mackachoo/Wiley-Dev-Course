@@ -21,7 +21,7 @@ public class StringsExerciseC {
      * @return String
      */
     public static String removeTheVowels(String word){
-        throw new UnsupportedOperationException("Code not yet written...!");
+        return word.replaceAll("[aeiouy]", "");
     }
     
 }

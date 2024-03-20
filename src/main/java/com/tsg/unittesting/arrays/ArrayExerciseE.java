@@ -4,6 +4,9 @@
 *********************************/
 package com.tsg.unittesting.arrays;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 /**
  *
  * @author ahill
@@ -22,7 +25,16 @@ public class ArrayExerciseE {
      */
 
     public static String camelCaseIt(String[] words){
-        throw new UnsupportedOperationException("Code not yet written...!");
+        StringBuilder camelCase = null;
+        for (String s : words) {
+            s = s.toLowerCase();
+            if (camelCase == null) {
+                camelCase.append(s);
+            } else {
+                camelCase.append(s.substring(0,1).toUpperCase()+s.substring(1));
+            }
+        }
+        return camelCase.toString();
     }
     
 }
