@@ -1,7 +1,7 @@
 package com.sg.vendingmachine.controller;
 
 import com.sg.vendingmachine.dao.PersistenceException;
-import com.sg.vendingmachine.dto.Student;
+import com.sg.vendingmachine.dto.Item;
 import com.sg.vendingmachine.service.DataValidationException;
 import com.sg.vendingmachine.service.DuplicateIdException;
 import com.sg.vendingmachine.service.ServiceLayer;
@@ -58,9 +58,9 @@ public class Controller {
         view.displayCreateStudentBanner();
         boolean hasErrors = false;
         do {
-            Student currentStudent = view.getNewStudentInfo();
+            Item currentItem = view.getNewStudentInfo();
             try {
-                service.createStudent(currentStudent);
+                service.createStudent(currentItem);
                 view.displayCreateSuccessBanner();
                 hasErrors = false;
             } catch (DuplicateIdException | DataValidationException e) {
@@ -71,14 +71,14 @@ public class Controller {
     }
 
     private void listStudents() throws PersistenceException {
-        List<Student> studentList = service.getAllStudents();
-        view.displayStudentList(studentList);
+        List<Item> itemList = service.getAllStudents();
+        view.displayStudentList(itemList);
     }
 
     private void viewStudent() throws PersistenceException {
         String studentId = view.getStudentIdChoice();
-        Student student = service.getStudent(studentId) ;
-        view.displayStudent(student);
+        Item item = service.getStudent(studentId) ;
+        view.displayStudent(item);
     }
 
     private void removeStudent() throws PersistenceException {

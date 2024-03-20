@@ -1,6 +1,6 @@
 package com.sg.vendingmachine.dao;
 
-import com.sg.vendingmachine.dto.Student;
+import com.sg.vendingmachine.dto.Item;
 import java.util.List;
 
 public interface Dao {
@@ -12,18 +12,18 @@ public interface Dao {
      * return null.
      *
      * @param studentId id with which student is to be associated
-     * @param student student to be added to the roster
+     * @param item student to be added to the roster
      * @return the Student object previously associated with the given
      * student id if it exists, null otherwise
      */
-    Student addStudent(String studentId, Student student) throws PersistenceException;
+    Item addStudent(String studentId, Item item) throws PersistenceException;
 
     /**
      * Returns a List of all students in the roster.
      *
      * @return List containing all students in the roster.
      */
-    List<Student> getAllStudents() throws PersistenceException;
+    List<Item> getAllStudents() throws PersistenceException;
 
     /**
      * Returns the student object associated with the given student id.
@@ -33,7 +33,7 @@ public interface Dao {
      * @return the Student object associated with the given student id,
      * null if no such student exists
      */
-    Student getStudent(String studentId) throws PersistenceException;
+    Item getStudent(String studentId) throws PersistenceException;
 
     /**
      * Removes from the roster the student associated with the given id.
@@ -44,5 +44,5 @@ public interface Dao {
      * @return Student object that was removed or null if no student
      * was associated with the given student id
      */
-    Student removeStudent(String studentId) throws PersistenceException;
+    Item removeStudent(String studentId) throws PersistenceException;
 }

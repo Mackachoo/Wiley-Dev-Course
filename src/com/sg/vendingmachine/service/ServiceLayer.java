@@ -1,24 +1,24 @@
 package com.sg.vendingmachine.service;
 
 import com.sg.vendingmachine.dao.PersistenceException;
-import com.sg.vendingmachine.dto.Student;
+import com.sg.vendingmachine.dto.Item;
 
 import java.util.List;
 
 public interface ServiceLayer {
 
-    void createStudent(Student student) throws
+    void createStudent(Item item) throws
             DuplicateIdException,
             DataValidationException,
             PersistenceException;
 
-    List<Student> getAllStudents() throws
+    List<Item> getAllStudents() throws
             PersistenceException;
 
-    Student getStudent(String studentId) throws
+    Item getStudent(String studentId) throws
             PersistenceException;
 
-    Student removeStudent(String studentId) throws
+    Item removeStudent(String studentId) throws
             PersistenceException;
 
 }

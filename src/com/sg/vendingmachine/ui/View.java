@@ -1,6 +1,6 @@
 package com.sg.vendingmachine.ui;
 
-import com.sg.vendingmachine.dto.Student;
+import com.sg.vendingmachine.dto.Item;
 
 import java.util.List;
 
@@ -32,16 +32,16 @@ public class View {
         io.print("=== Create Student ===");
     }
 
-    public Student getNewStudentInfo() {
+    public Item getNewStudentInfo() {
         String studentId = io.readString("Please enter Student ID");
         String firstName = io.readString("Please enter First Name");
         String lastName = io.readString("Please enter Last Name");
         String cohort = io.readString("Please enter Cohort");
-        Student currentStudent = new Student(studentId);
-        currentStudent.setFirstName(firstName);
-        currentStudent.setLastName(lastName);
-        currentStudent.setCohort(cohort);
-        return currentStudent;
+        Item currentItem = new Item(studentId);
+        currentItem.setFirstName(firstName);
+        currentItem.setLastName(lastName);
+        currentItem.setCohort(cohort);
+        return currentItem;
     }
 
     public void displayCreateSuccessBanner() {
@@ -53,12 +53,12 @@ public class View {
         io.print("=== Display All Students ===");
     }
 
-    public void displayStudentList(List<Student> studentList) {
-        for (Student currentStudent : studentList) {
+    public void displayStudentList(List<Item> itemList) {
+        for (Item currentItem : itemList) {
             String studentInfo = String.format("#%s : %s %s",
-                    currentStudent.getStudentId(),
-                    currentStudent.getFirstName(),
-                    currentStudent.getLastName());
+                    currentItem.getStudentId(),
+                    currentItem.getFirstName(),
+                    currentItem.getLastName());
             io.print(studentInfo);
         }
         io.readString("Please hit enter to continue.");
@@ -73,11 +73,11 @@ public class View {
         return io.readString("Please enter the Student ID.");
     }
 
-    public void displayStudent(Student student) {
-        if (student != null) {
-            io.print(student.getStudentId());
-            io.print(student.getFirstName() + " " + student.getLastName());
-            io.print(student.getCohort());
+    public void displayStudent(Item item) {
+        if (item != null) {
+            io.print(item.getStudentId());
+            io.print(item.getFirstName() + " " + item.getLastName());
+            io.print(item.getCohort());
             io.print("");
         } else {
             io.print("No such student.");
@@ -90,8 +90,8 @@ public class View {
         io.print("=== Remove Student ===");
     }
 
-    public void displayRemoveResult(Student studentRecord) {
-        if(studentRecord != null){
+    public void displayRemoveResult(Item itemRecord) {
+        if(itemRecord != null){
             io.print("Student successfully removed.");
         }else{
             io.print("No such student.");

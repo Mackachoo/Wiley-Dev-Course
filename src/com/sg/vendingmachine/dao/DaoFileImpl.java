@@ -1,47 +1,47 @@
 package com.sg.vendingmachine.dao;
 
-import com.sg.vendingmachine.dto.Student;
+import com.sg.vendingmachine.dto.Item;
 
 import java.io.*;
 import java.util.*;
 
 public class DaoFileImpl implements Dao {
 
-    private Map<String, Student> students = new HashMap<>();
+    private Map<String, Item> students = new HashMap<>();
     public static final String ROSTER_FILE = "roster.txt";
     public static final String DELIMITER = "::";
 
 
     @Override
-    public Student addStudent(String studentId, Student student)  throws PersistenceException {
+    public Item addStudent(String studentId, Item item)  throws PersistenceException {
         loadRoster();
-        Student newStudent = students.put(studentId, student);
+        Item newItem = students.put(studentId, item);
         writeRoster();
-        return newStudent;
+        return newItem;
     }
 
 
     @Override
-    public List<Student> getAllStudents()
+    public List<Item> getAllStudents()
             throws PersistenceException {
         loadRoster();
         return new ArrayList(students.values());
     }
 
     @Override
-    public Student getStudent(String studentId)
+    public Item getStudent(String studentId)
             throws PersistenceException {
         loadRoster();
         return students.get(studentId);
     }
 
     @Override
-    public Student removeStudent(String studentId)
+    public Item removeStudent(String studentId)
             throws PersistenceException {
         loadRoster();
-        Student removedStudent = students.remove(studentId);
+        Item removedItem = students.remove(studentId);
         writeRoster();
-        return removedStudent;
+        return removedItem;
     }
 
     private void loadRoster() throws PersistenceException {
@@ -58,13 +58,13 @@ public class DaoFileImpl implements Dao {
         }
 
         String currentLine;
-        Student currentStudent;
+        Item currentItem;
 
         while (scanner.hasNextLine()) {
             currentLine = scanner.nextLine();
-            currentStudent = Student.parseStudent(currentLine);
+            currentItem = Item.parseStudent(currentLine);
 
-            students.put(currentStudent.getStudentId(), currentStudent);
+            students.put(currentItem.getStudentId(), currentItem);
         }
         scanner.close();
     }
@@ -80,9 +80,9 @@ public class DaoFileImpl implements Dao {
         }
 
         String studentAsText;
-        List<Student> studentList = this.getAllStudents();
-        for (Student currentStudent : studentList) {
-            studentAsText = currentStudent.toString();
+        List<Item> itemList = this.getAllStudents();
+        for (Item currentItem : itemList) {
+            studentAsText = currentItem.toString();
             out.println(studentAsText);
             out.flush();
         }
