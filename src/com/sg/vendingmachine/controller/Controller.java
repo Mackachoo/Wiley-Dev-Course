@@ -6,10 +6,12 @@ import com.sg.vendingmachine.service.DataValidationException;
 import com.sg.vendingmachine.service.DuplicateIdException;
 import com.sg.vendingmachine.service.ServiceLayer;
 import com.sg.vendingmachine.ui.View;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@Component
 public class Controller {
 
     private final View view;

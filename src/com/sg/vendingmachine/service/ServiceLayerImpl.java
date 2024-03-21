@@ -3,6 +3,7 @@ package com.sg.vendingmachine.service;
 import com.sg.vendingmachine.dao.Dao;
 import com.sg.vendingmachine.dao.PersistenceException;
 import com.sg.vendingmachine.dto.Item;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -11,6 +12,7 @@ import java.util.Map;
 
 import static com.sg.vendingmachine.service.VendResult.*;
 
+@Component
 public class ServiceLayerImpl implements ServiceLayer {
 
     private Dao dao;

@@ -1,7 +1,10 @@
 package com.sg.vendingmachine.ui;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 
+@Component
 public class UserIOConsoleImpl implements UserIO{
 
     final private Scanner mcScan = new Scanner(System.in);

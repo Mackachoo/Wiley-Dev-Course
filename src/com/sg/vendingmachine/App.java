@@ -8,17 +8,16 @@ import com.sg.vendingmachine.service.ServiceLayerImpl;
 import com.sg.vendingmachine.ui.View;
 import com.sg.vendingmachine.ui.UserIO;
 import com.sg.vendingmachine.ui.UserIOConsoleImpl;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App {
 
     public static void main(String[] args) {
-        UserIO myIo = new UserIOConsoleImpl();
-        View myView = new View(myIo);
-        Dao myDao = new DaoFileImpl();
-        ServiceLayer myService = new ServiceLayerImpl(myDao);
+        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+        appContext.scan("com.sg.vendingmachine");
+        appContext.refresh();
 
-        Controller controller =
-                new Controller(myService, myView);
+        Controller controller = appContext.getBean("controller", Controller.class);
         controller.run();
     }
 }

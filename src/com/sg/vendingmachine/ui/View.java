@@ -2,6 +2,7 @@ package com.sg.vendingmachine.ui;
 
 import com.sg.vendingmachine.dto.Item;
 import com.sg.vendingmachine.service.Coins;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -9,6 +10,7 @@ import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class View {
     private UserIO io;
 

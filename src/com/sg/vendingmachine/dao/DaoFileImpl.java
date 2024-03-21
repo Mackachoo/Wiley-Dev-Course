@@ -1,12 +1,14 @@
 package com.sg.vendingmachine.dao;
 
 import com.sg.vendingmachine.dto.Item;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Component
 public class DaoFileImpl implements Dao {
 
     private Map<Item, Integer> items;
