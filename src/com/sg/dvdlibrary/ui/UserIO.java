@@ -1,5 +1,7 @@
 package com.sg.dvdlibrary.ui;
 
+import org.springframework.stereotype.Component;
+
 public interface UserIO {
     void print(String msg);
 

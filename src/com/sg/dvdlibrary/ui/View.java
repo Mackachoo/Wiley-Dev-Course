@@ -1,9 +1,11 @@
 package com.sg.dvdlibrary.ui;
 
 import com.sg.dvdlibrary.dto.DVD;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class View {
     private final UserIO io;
 

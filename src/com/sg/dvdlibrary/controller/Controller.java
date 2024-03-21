@@ -4,7 +4,9 @@ import com.sg.dvdlibrary.dao.Dao;
 import com.sg.dvdlibrary.dao.DaoException;
 import com.sg.dvdlibrary.dto.DVD;
 import com.sg.dvdlibrary.ui.View;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Controller {
 
     private final View view;
