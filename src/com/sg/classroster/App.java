@@ -10,18 +10,17 @@ import com.sg.classroster.service.ClassRosterServiceLayerImpl;
 import com.sg.classroster.ui.ClassRosterView;
 import com.sg.classroster.ui.UserIO;
 import com.sg.classroster.ui.UserIOConsoleImpl;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App {
 
     public static void main(String[] args) {
-        UserIO myIo = new UserIOConsoleImpl();
-        ClassRosterView myView = new ClassRosterView(myIo);
-        ClassRosterDao myDao = new ClassRosterDaoFileImpl();
-        ClassRosterAuditDao myAuditDao = new ClassRosterAuditDaoFileImpl();
-        ClassRosterServiceLayer myService = new ClassRosterServiceLayerImpl(myDao, myAuditDao);
 
-        ClassRosterController controller =
-                new ClassRosterController(myService, myView);
+        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+        appContext.scan("com.sg.classroster");
+        appContext.refresh();
+
+        ClassRosterController controller = appContext.getBean("classRosterController", ClassRosterController.class);
         controller.run();
     }
 }

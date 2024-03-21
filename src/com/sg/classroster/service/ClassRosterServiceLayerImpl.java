@@ -4,16 +4,19 @@ import com.sg.classroster.dao.ClassRosterAuditDao;
 import com.sg.classroster.dao.ClassRosterDao;
 import com.sg.classroster.dao.ClassRosterPersistenceException;
 import com.sg.classroster.dto.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class ClassRosterServiceLayerImpl implements
         ClassRosterServiceLayer {
 
     ClassRosterDao dao;
     private ClassRosterAuditDao auditDao;
 
-
+//    @Autowired
     public ClassRosterServiceLayerImpl(ClassRosterDao dao, ClassRosterAuditDao auditDao) {
         this.dao = dao;
         this.auditDao = auditDao;

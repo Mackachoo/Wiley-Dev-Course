@@ -1,12 +1,16 @@
 package com.sg.classroster.ui;
 
 import com.sg.classroster.dto.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class ClassRosterView {
     private UserIO io;
 
+    @Autowired
     public ClassRosterView(UserIO io) {
         this.io = io;
     }

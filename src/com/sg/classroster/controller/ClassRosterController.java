@@ -6,18 +6,23 @@ import com.sg.classroster.service.ClassRosterDataValidationException;
 import com.sg.classroster.service.ClassRosterDuplicateIdException;
 import com.sg.classroster.service.ClassRosterServiceLayer;
 import com.sg.classroster.ui.ClassRosterView;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class ClassRosterController {
 
     private final ClassRosterView view;
     private ClassRosterServiceLayer service;
 
+    @Autowired
     public ClassRosterController(ClassRosterServiceLayer service, ClassRosterView view) {
         this.service = service;
         this.view = view;
     }
+    
 
     public void run() {
         boolean keepGoing = true;

@@ -1,10 +1,12 @@
 package com.sg.classroster.dao;
 
 import com.sg.classroster.dto.Student;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.util.*;
 
+@Component
 public class ClassRosterDaoFileImpl implements ClassRosterDao {
 
     private Map<String, Student> students = new HashMap<>();
