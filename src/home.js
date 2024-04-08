@@ -112,6 +112,7 @@ $("#createButton").click(async function () {
     $('#dvdModal .modal-title').text("Create new DVD");
 
     $('#dvdForm>fieldset').removeAttr('disabled');
+    $('#dvdForm').trigger("reset");
     $('#dvdModal .modal-footer').show();
     $('#dvdModal').modal("show");
 });
@@ -119,6 +120,7 @@ $("#createButton").click(async function () {
 $("#saveButton").click(async function (event) {
     event.preventDefault();
     console.log("Submitting DVD");
+    if (!inputValidations()) return;
     let dvd = {
         dvdId: activeID === "" ? null : activeID,
         title: $('#title').val(),
@@ -157,3 +159,19 @@ $("#deleteButton").click(async function () {
     $('#deleteModal').modal("hide");
     fetchAllDvds();
 });
+
+function inputValidations() {
+    if ($('#title').val() === "") {
+        $('#dvdCallout').text("Please enter a title.").show().delay(2000).fadeOut();
+        return false;
+    }
+    if ($('#releaseYear').val() === "") {
+        $('#dvdCallout').text("Please enter a release year.").show().delay(2000).fadeOut();
+        return false;
+    }
+    if ($('#releaseYear').val().toString().length !== 4) {
+        $('#dvdCallout').text("Please enter 4 digits to represent the release year.").show().delay(2000).fadeOut();
+        return false;
+    }
+    return true;
+}
