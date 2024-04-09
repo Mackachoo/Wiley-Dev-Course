@@ -3,18 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-package com.sg.jdbcexample;
+package com.sg.jdbctemplateexample;
 
 /**
  *
  * @author kylerudy
  */
 public class ToDo {
-    private int id;
-    private String todo;
-    private String note;
-    private boolean finished;
+    int id;
+    String todo;
+    String note;
+    boolean finished;
 
     public int getId() {
         return id;
@@ -47,6 +46,6 @@ public class ToDo {
     public void setFinished(boolean finished) {
         this.finished = finished;
     }
-
-
+    
+    
 }
